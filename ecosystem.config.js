@@ -7,10 +7,10 @@ module.exports = {
     production: {
       user: 'ahuynh',
       host: 'ec2-54-215-240-23.us-west-1.compute.amazonaws.com',
-      key: '~/.ssh/hyphy-ipsum.pem',
+      key: '~/Downloads/BasicWebServer.pem',
       ref: 'origin/master',
       repo: 'https://github.com/alberthuynh91/hyphy-ipsum.git',
-      path: '/Users/ahuynh/Desktop/hyphy-ipsum',
+      path: '/home/ubuntu/www/hyphy-ipsum',
       'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
     }
   }
