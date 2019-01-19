@@ -12,6 +12,9 @@ app.get('/api/greeting', (req, res) => {
   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 });
 
-app.listen(3001, () =>
-  console.log('Express server is running on localhost:3001')
-);
+// app.listen(3001, () =>
+//   console.log('Express server is running on localhost:3001')
+// );
+
+app.use(express.static('public'))
+app.listen(3001, () => console.log('Server running on port 3000'))
