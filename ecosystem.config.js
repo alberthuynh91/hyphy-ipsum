@@ -7,7 +7,7 @@ module.exports = {
     production: {
       user: 'ahuynh',
       host: 'ec2-54-215-240-23.us-west-1.compute.amazonaws.com',
-      key: '~/Downloads/BasicWebServer.pem',
+      key: '~/.ssh/hyphy-ipsum.pem',
       ref: 'origin/master',
       repo: 'https://github.com/alberthuynh91/hyphy-ipsum.git',
       path: '/home/ubuntu/www/hyphy-ipsum',
