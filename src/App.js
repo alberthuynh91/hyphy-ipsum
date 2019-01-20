@@ -59,7 +59,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p>{this.state.loremIpsumText}</p>
+          <p className="text-container">
+            <div className="ipsum-text">{this.state.loremIpsumText}</div>
+          </p>
           <button onClick={() => { this.generateIpsum() }}>Ghost ride the whip</button>
         </header>
       </div>

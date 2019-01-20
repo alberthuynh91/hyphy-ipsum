@@ -8,7 +8,10 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url("macdre.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,6 +23,17 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.text-container {
+  background-color: rgba(95, 93, 93, 0.5);
+  padding: 20px;
+  margin: 30px;
+  opacity: 0.8;
+}
+
+.ipsum-text {
+  opacity: 1.0;
 }
 
 @keyframes App-logo-spin {
