@@ -1,16 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+
+function shuffle(array) {
+  var m = array.length, t, i;
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+  return array;
+}
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      greeting: ''
+      greeting: '',
+      hyphy: [],
+      loremIpsumText: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    fetch(`/api/hyphy`)
+      .then(response => response.json())
+      .then(state => this.setState(state))
+  }
+
+  generateIpsum = () => {
+    const shuffledArray = shuffle(this.state.hyphy)
+    const loremIpsumText = shuffledArray.join(' ')
+    this.setState({ 
+      hyphy: shuffledArray,
+      loremIpsumText
+    })
   }
 
   handleChange(event) {
@@ -28,29 +59,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="name">Enter your name: </label>
-            <input
-              id="name"
-              type="text"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            <button type="submit">Submit</button>
-          </form>
-          <p>{this.state.greeting}</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <p>{this.state.loremIpsumText}</p>
+          <button onClick={() => { this.generateIpsum() }}>Ghost ride the whip</button>
         </header>
       </div>
     );
