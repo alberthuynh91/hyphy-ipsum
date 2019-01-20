@@ -59,6 +59,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <h1>Hyphy Lorem Ipsum Generator</h1>
           <p className="text-container">
             <div className="ipsum-text">{this.state.loremIpsumText}</div>
           </p>
