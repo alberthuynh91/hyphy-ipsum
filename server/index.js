@@ -1,11 +1,9 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(pino);
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../build')));
