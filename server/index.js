@@ -1,6 +1,15 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+var fs = require('fs');
+
+function getTextFromFile(textFile) {
+  var array = fs.readFileSync(textFile).toString().split("\n");
+  for(var i in array) {
+      console.log(array[i]);
+  }
+  return array
+}
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,12 +23,12 @@ app.get('/api/greeting', (req, res) => {
   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 });
 
-// app.listen(3001, () =>
-//   console.log('Express server is running on localhost:3001')
-// );
+app.get('/api/hyphy', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  const array = getTextFromFile('hyphy.txt')
+  res.send(JSON.stringify({ hyphy: array }));
+})
 
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'../build/index.html'));
 });
